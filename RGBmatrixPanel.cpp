@@ -370,6 +370,45 @@ void RGBmatrixPanel::drawPixel(int16_t x, int16_t y, uint16_t c)
 	// Loop counter stuff
 	bit   = 2;
 	limit = 1 << nPlanes;
+	
+	// Correcting for wrong pixel mapping (on P10 outdoor panels 1/4 scan) every 4 rows
+	// For row 0 to 3 and 8 to 11 the mixels are mapped in this order:
+	// 7 6 5 4 3 2 1 0 15 14 13 12 11 10 9 8 23 22 21 20 19 18 17 16 31 30 29 28 27 26 25 23
+	if (y < 4 || (y > 7 && y < 12))
+	{
+		if (x < 8)
+		{	
+			x = 7-x;
+		}
+		else if (x < 16)
+		{
+			x = (15-x) + 8 ;
+		}
+		else if (x < 24)
+		{
+			x = (23-x) + 16 ;
+		}
+		else if (x < 32)
+		{
+			x = (31-x) + 24 ;
+		}
+		else if (x < 40)
+		{
+			x = (39-x) + 32 ;
+		}
+		else if (x < 48)
+		{
+			x = (47-x) + 40 ;
+		}
+		else if (x < 56)
+		{
+			x = (55-x) + 48 ;
+		}
+		else if (x < 64)
+		{
+			x = (63-x) + 56 ;
+		}
+	}
 
 	// Alternative layout of 1/4 panel:
 	// Calculate shift (distance between base of 
