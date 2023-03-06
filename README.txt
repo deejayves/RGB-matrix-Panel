@@ -1,6 +1,9 @@
-This is an Arduino library for our 16x32 and 32x32 RGB LED matrix panels
+This is an Arduino library for our 16x32 and 32x32 RGB LED matrix panels.
 
-Pick one up at http://www.adafruit.com/products/420 & http://www.adafruit.com/products/607 !
+*******************************************************************************************************
+* This library was modified to correct the errors for usage with P10 32x16px 1/4scan OUTDOOR Modules. *
+*  https://nl.aliexpress.com/item/32735128260.html                                                    *
+*******************************************************************************************************
 
 
 Written by Limor Fried/Ladyada & Phil Burgess/PaintYourDragon for Adafruit Industries.  
